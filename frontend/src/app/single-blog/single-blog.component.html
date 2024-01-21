@@ -1,0 +1,20 @@
+<div class="blog-detail-container" *ngIf="blog">
+    <h2>{{ blog.title }}</h2>
+    <p>{{ blog.content }}</p>
+
+    <div *ngIf="blog.comments && blog.comments.length > 0" class="comments-section">
+        <h3>Comments:</h3>
+        <ul>
+            <li *ngFor="let comment of blog.comments">
+                <p>{{ comment.content }}</p>
+                <p>Comment by: {{ comment.author.name }}</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="add-comment-section">
+        <h3>Add a Comment:</h3>
+        <textarea placeholder="Type your comment here..." id="comment" [(ngModel)]="comment"></textarea>
+        <button (click)="addComment()">Submit Comment</button>
+    </div>
+</div>

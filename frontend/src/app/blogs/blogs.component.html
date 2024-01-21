@@ -1,0 +1,21 @@
+<div *ngIf="blogs.length > 0; else noBlogs">
+  <div *ngFor="let blog of blogs">
+    <h2>{{ blog.title }}</h2>
+    <p>{{ blog.content }}</p>
+    <p>Author: {{ blog.author ? blog.author.name : 'Unknown' }}</p>
+    <p>Created At: {{ blog.createdAt | date:'medium' }}</p>
+
+    <div class="icons">
+      <i class="fas fa-trash-alt" (click)="deleteBlog(blog._id)" style="cursor: pointer;"></i>
+      <i class="fa fa-eye" aria-hidden="true" (click)="openBlog(blog._id)" id="title"></i>
+      <i class="fas fa-pen" (click)="editBlog(blog._id)" style="cursor: pointer;"></i>
+
+    </div>
+
+    <hr />
+  </div>
+</div>
+
+<ng-template #noBlogs>
+  <h1>No Blogs</h1>
+</ng-template>
